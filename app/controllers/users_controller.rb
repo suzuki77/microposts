@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :xxx , only: [:edit, :update]
+  before_action :check , only: [:edit, :update]
   
   def edit
     @user = User.find(params[:id])
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :location, :password, :password_confirmation)
   end
   
-  def xxx
+  def check
     @user = User.find(params[:id])
     if @user != current_user
       redirect_to root_url
